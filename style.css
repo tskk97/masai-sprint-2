@@ -1,0 +1,121 @@
+.textCenter{
+    text-align: center;
+}
+.textRight{
+    text-align: right;
+    padding: 10px;
+    margin: 10px;
+}
+.textLeft{
+    text-align: left;
+    padding: 10px;
+    margin: 10px;
+}
+.textJustify{
+    text-align: justify;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    border-bottom: 4px solid #d45425;
+    border-right: 4px solid #d45425;
+    font-family: Ubuntu;
+    font-size: 20px;
+    background-color: #ff7f50;
+    border-radius: 10px;
+}
+.header div:nth-of-type(2){
+    flex-grow: 1;
+}
+.imgSnake{
+    width: 60px;
+}
+.imgLadder{
+    width: 65px;
+}
+.playersInfo{
+    display: flex;
+    flex-direction: row;
+}
+.playersInfo div:nth-of-type(2){
+    flex-grow: 1;
+}
+#playerOneName{
+    color: teal;
+}
+#playerTwoName{
+    color: orange;
+}
+button{
+    border: 2px solid #154117;
+    border-radius: 5px;
+    padding: 15px 15px;
+    background-color: #226227;
+    color: white;
+    font-family: Ubuntu;
+    font-size: 15px;
+}
+button:hover{
+    background-color: #154117;
+    /* background-color: #fa3e3e; */
+    /* background-color: #67cc63; */
+}
+label{
+    font-family: Ubuntu;
+    font-size: 20px;
+}
+input{
+    font-family: Ubuntu;
+    font-size: 20px;
+    padding: 1px 5px;
+}
+a{
+    text-decoration: none;
+    background-color: #226227;
+    border-radius: 5px;
+    color: white;
+    font-family: Ubuntu;
+    padding: 9px;
+    font-size: 15px;
+}
+h1{
+    margin-left: 20px;
+}
+h2, ul{
+    font-family: Ubuntu;
+}
+#gameArea{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+#rules{
+    grid-area: 1 / 1 / span 1 / span 1;
+}
+#gameBoard{
+    grid-area: 1 / 2 / span 1 / span 1;
+    display: flex;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    /* border-right: 2px solid black; */
+    flex-wrap: wrap;
+    margin-left: 10px;
+    font-family: Ubuntu;
+    text-align: center;
+    background-color: #f1f0f0;
+}
+#gameBoard span{
+    width: 48px;
+    height: 48px;
+    border: 1px solid black;
+}
+#players{
+    grid-area: 1 / 3 / span 1 / span 1;
+    text-align: center;
+    font-family: Ubuntu;
+}
+#diceValue{
+    font-size: 80px;
+}
+

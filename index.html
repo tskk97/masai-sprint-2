@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Snakes & Ladders
+        </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="header">
+            <div>
+                <img class="imgSnake textLeft" src="resources/snake.png"/>
+            </div>
+            <div>
+                <h1 class="textCenter">Snakes & Ladders</h1>
+            </div>
+            <div>
+                <img class="imgLadder textRight" src="resources/ladder.png"/>
+            </div>
+        </div>
+        <br>
+        <div class="playersInfo">
+            <div class="textLeft">
+                <label for="playerOne">Player 1: </label>
+                <input id="playerOne" type="text">
+            </div>
+            <!-- <div class="textCenter">
+                <a id="startGame" onclick="startGame" href="">START</a>
+            </div> -->
+            <!-- <span><input type="button" value="START"></span> -->
+            <div class="textCenter">
+                <button id="startGame" onclick="startGame()">START</button>
+            </div>
+            <div class="textRight">
+                <label for="playerTwo">Player 2: </label>
+                <input id="playerTwo" type="text">
+            </div> 
+        </div>
+        <!-- <div class="gridBox textCenter">
+            <div></div>
+        </div> -->
+        <div id="gameArea">
+            <div id="rules">
+                <h2 class="textCenter">RULES</h2>
+                <ul>
+                    <li>The objective of the game is to be the first player to reach the end by moving across the board from square one to the final square.</li><br>
+                    <li>Each player takes a turn to roll the die and the number that you rolled will be the number of moves forward.</li><br>
+                    <li>The ladders in the game allow you to move and get ahead faster. If you land on a ladder you can go forward a few moves.</li><br>
+                    <li>The snakes in the game will slow your game. If you land on a snake you have to go back a few moves.</li><br>
+                    <li>Land exactly on the last square to win, i.e. you can only win by rolling the exact number needed to land on the last square.</li><br>
+                </ul>
+            </div>
+            <div id="gameBoard"></div>
+            <div id="players">
+                <h2 id="playerOneName"></h2>
+                <button id="dice1" onclick="rollDice1()">Player 1, Roll the Dice</button>
+                <h1 id="diceValue"></h1>
+                <button id="dice2" onclick="rollDice2()">Player 2, Roll the Dice</button>
+                <h2 id="playerTwoName"></h2>
+            </div>
+        </div>
+
+
+        <script src="script.js"></script>
+    </body>
+</html>
