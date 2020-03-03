@@ -42,10 +42,10 @@
     flex-grow: 1;
 }
 #playerOneName{
-    color: teal;
+    color: purple;
 }
 #playerTwoName{
-    color: orange;
+    color: #e98400;
 }
 button{
     border: 2px solid #154117;
@@ -85,9 +85,13 @@ h1{
 h2, ul{
     font-family: Ubuntu;
 }
+ul{
+    text-align: left !important;
+}
 #gameArea{
     display: grid;
     grid-template-columns: 33% 33% 33%;
+    text-align: center;
 }
 #rules{
     grid-area: 1 / 1 / span 1 / span 1;
@@ -95,6 +99,7 @@ h2, ul{
 #gameBoard{
     grid-area: 1 / 2 / span 1 / span 1;
     display: flex;
+    /* flex-direction: row-reverse; */
     width: 500px;
     height: 500px;
     border: 1px solid black;
@@ -102,8 +107,9 @@ h2, ul{
     flex-wrap: wrap;
     margin-left: 10px;
     font-family: Ubuntu;
-    text-align: center;
+    text-align: left;
     background-color: #f1f0f0;
+    color: #a0a0a0;
 }
 #gameBoard span{
     width: 48px;
@@ -117,5 +123,17 @@ h2, ul{
 }
 #diceValue{
     font-size: 80px;
+}
+#bonusLadder{
+    color: #3e8ffa;
+    font-family: Ubuntu;
+    font-weight: bold;
+    font-size: 30px;
+}
+#oopsSnake{
+    color: #fa3e3e;
+    font-family: Ubuntu;
+    font-weight: bold;
+    font-size: 30px;
 }
 
