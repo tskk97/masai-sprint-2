@@ -35,7 +35,7 @@ for(var i = 0; i < allLadders.length; i++){
     var ladder = document.getElementById(allLadders[i])
     ladder.style.backgroundColor = "#3e8ffa"
     ladder.style.backgroundImage = "url('resources/ladder.png')"
-    ladder.style.backgroundSize = "45px"
+    ladder.style.backgroundSize = "46px"
 }
 // var nonNumbers = ["r10c4", "r8c6", "r6c3", "r4c10", "r3c6", "r1c4", "r10c8", "r8c2", "r7c9", "r5c5", "r4c1", "r2c8", "r10c10", "r1c1"]
 // count = 100
