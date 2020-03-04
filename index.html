@@ -19,27 +19,24 @@
                 <img class="imgLadder textRight" src="resources/ladder.png"/>
             </div>
         </div>
+
         <br>
+
         <div class="playersInfo">
             <div class="textLeft">
                 <label for="playerOne">Player 1: </label>
                 <input id="playerOne" type="text">
             </div>
-            <!-- <div class="textCenter">
-                <a id="startGame" onclick="startGame" href="">START</a>
-            </div> -->
-            <!-- <span><input type="button" value="START"></span> -->
             <div class="textCenter">
                 <button id="startGame" onclick="startGame()">START</button>
+                <button id="newGame" onclick="playAgain()">NEW GAME</button>
             </div>
             <div class="textRight">
                 <label for="playerTwo">Player 2: </label>
                 <input id="playerTwo" type="text">
             </div> 
         </div>
-        <!-- <div class="gridBox textCenter">
-            <div></div>
-        </div> -->
+
         <div id="gameArea" >
             <div id="rules">
                 <h2 class="textCenter">RULES</h2>
@@ -52,6 +49,8 @@
                 </ul>
                 <div id="bonusLadder">YAY! You landed on a Ladder!<br>+6 Steps :)</div>
                 <div id="oopsSnake">Oops! You landed on a Snake!<br>-6 Steps :(</div>
+                <div id="playerOneWinner"></div>
+                <div id="playerTwoWinner"></div>
             </div>
             <div id="gameBoard"></div>
             <div id="players">
@@ -63,7 +62,6 @@
             </div>
         </div>
 
-
-        <script src="script.js"></script>
+        <script type="text/javascript" src="script.js"></script>
     </body>
 </html>

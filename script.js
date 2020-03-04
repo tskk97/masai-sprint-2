@@ -6,6 +6,8 @@ var bonusLadder = document.getElementById("bonusLadder")
 bonusLadder.style.display = "none"
 var oopsSnake = document.getElementById("oopsSnake")
 oopsSnake.style.display = "none"
+var newGame = document.getElementById("newGame")
+newGame.style.display = "none"
 
 var gameBoard = document.getElementById("gameBoard")
 var div = []
@@ -16,36 +18,26 @@ for(var i = 1; i <= 10; i++){
         div[i][j] = document.createElement('span')
         div[i][j].setAttribute('id', 'r'+i+'c'+j)
         div[i][j].setAttribute('class', count)
-        // div[i][j].textContent = count
         count--
         gameBoard.appendChild(div[i][j])
     }
 }
-var allSnakes = ["r10c4", "r8c6", "r6c3", "r4c10", "r3c5", "r1c4"]
+var allSnakes = ["r10c4", "r8c6", "r6c3", "r4c10", "r3c6", "r1c4"]
 for(var i = 0; i < allSnakes.length; i++){
     var snake = document.getElementById(allSnakes[i])
     snake.style.backgroundColor = "#fa3e3e"
     snake.style.backgroundImage = "url('resources/snake.png')"
     snake.style.backgroundSize = "45px"
-    // var snakeImage = document.createElement('img')
-    // snakeImage.setAttribute('src','resources/snake.png')
-    // snakeImage.style.width = "45px"
-    // snake.style.width = "45px"
-    // snake.appendChild(snakeImage)
 }
 
-var allLadders = ["r10c8", "r8c2", "r7c9", "r5c6", "r4c1", "r2c8"]
+var allLadders = ["r10c8", "r8c2", "r7c9", "r5c5", "r4c1", "r2c8"]
 for(var i = 0; i < allLadders.length; i++){
     var ladder = document.getElementById(allLadders[i])
     ladder.style.backgroundColor = "#3e8ffa"
     ladder.style.backgroundImage = "url('resources/ladder.png')"
     ladder.style.backgroundSize = "45px"
-    // var ladderImage = document.createElement('img')
-    // ladderImage.setAttribute('src','resources/ladder.png')
-    // ladderImage.style.width = "45px"
-    // ladder.appendChild(ladderImage)
 }
-// var nonNumbers = ["r10c4", "r8c6", "r6c3", "r4c10", "r3c5", "r1c4", "r10c8", "r8c2", "r7c9", "r5c6", "r4c1", "r2c8", "r10c10", "r1c1"]
+// var nonNumbers = ["r10c4", "r8c6", "r6c3", "r4c10", "r3c6", "r1c4", "r10c8", "r8c2", "r7c9", "r5c5", "r4c1", "r2c8", "r10c10", "r1c1"]
 // count = 100
 // positions = 100
 // for(var i = 1; i <= 10; i++){
@@ -58,7 +50,7 @@ for(var i = 0; i < allLadders.length; i++){
 //         //         count--
 //         //     }
 //         // }
-//         if('r'+i+'c'+j != "r10c4" || 'r'+i+'c'+j != "r8c6" || 'r'+i+'c'+j != "r6c3" || 'r'+i+'c'+j != "r4c10" || 'r'+i+'c'+j != "r3c5" || 'r'+i+'c'+j != "r1c4" || 'r'+i+'c'+j != "r10c8" || 'r'+i+'c'+j != "r8c2" || 'r'+i+'c'+j != "r7c9" || 'r'+i+'c'+j != "r5c6" || 'r'+i+'c'+j != "r4c1" || 'r'+i+'c'+j != "r2c8"){
+//         if('r'+i+'c'+j != "r10c4" || 'r'+i+'c'+j != "r8c6" || 'r'+i+'c'+j != "r6c3" || 'r'+i+'c'+j != "r4c10" || 'r'+i+'c'+j != "r3c6" || 'r'+i+'c'+j != "r1c4" || 'r'+i+'c'+j != "r10c8" || 'r'+i+'c'+j != "r8c2" || 'r'+i+'c'+j != "r7c9" || 'r'+i+'c'+j != "r5c5" || 'r'+i+'c'+j != "r4c1" || 'r'+i+'c'+j != "r2c8"){
 //             numbers.textContent = count
 //             count--
 //         }
@@ -78,25 +70,24 @@ var start = document.getElementById("r10c10")
 start.style.backgroundColor = "#3ab636"
 start.style.backgroundImage = "url('resources/start2.png')"
 start.style.backgroundSize = "48px"
-// var startImage = document.createElement('img')
-// startImage.setAttribute('src','resources/start.png')
-// startImage.style.width = "35px"
-// startImage.style.marginTop = "7px"
-// start.appendChild(startImage)
 
 var goal = document.getElementById("r1c1")
 goal.style.backgroundColor = "#e6b105"
 goal.style.backgroundImage = "url('resources/winner3.png')"
 goal.style.backgroundSize = "48px"
-// var winnerImage = document.createElement('img')
-// winnerImage.setAttribute('src','resources/winner.png')
-// winnerImage.style.width = "35px"
-// winnerImage.style.marginTop = "7px"
-// goal.appendChild(winnerImage)
+
+var startP1
+var startImageP1
+var playerOne
+var playerTwo
+var playerOneWinner = document.getElementById("playerOneWinner")
+playerOneWinner.style.display = "none"
+var playerTwoWinner = document.getElementById("playerTwoWinner")
+playerTwoWinner.style.display = "none"
 
 function startGame(){
-    var playerOne = document.getElementById("playerOne").value
-    var playerTwo = document.getElementById("playerTwo").value
+    playerOne = document.getElementById("playerOne").value
+    playerTwo = document.getElementById("playerTwo").value
     if(playerOne == "" || playerTwo == ""){
         alert("To start, provide both players name!")
     }
@@ -109,19 +100,26 @@ function startGame(){
         var dice1 = document.getElementById("dice1")
         dice1.style.visibility = "visible"
 
-        var start = document.getElementById("r10c10")
-        var startImage = document.createElement('img')
-        startImage.setAttribute('src','resources/player1.png')
-        startImage.setAttribute('id','player1')
-        startImage.style.width = "20px"
-        startImage.style.marginTop = "15px"
-        startImage.style.marginLeft = "13px"
-        start.appendChild(startImage)
+        startP1 = document.getElementById("r10c10")
+        startImageP1 = document.createElement('img')
+        startImageP1.setAttribute('src','resources/player1.png')
+        startImageP1.setAttribute('id','player1')
+        startImageP1.style.width = "20px"
+        startImageP1.style.marginTop = "15px"
+        startImageP1.style.marginLeft = "13px"
+        startP1.appendChild(startImageP1)
 
-// bonusLadder.style.display = "unset"
-// oopsSnake.style.display = "unset"
+        var startGame = document.getElementById("startGame")
+        startGame.style.display = "none"
 
+        // bonusLadder.style.display = "unset"
+        // oopsSnake.style.display = "unset"
+        // playerOneWinner.style.display = "unset"
     }
+}
+function playAgain(){
+    // alert("Refreshing...")
+    location.replace('/home/saikiran/projects/masai/sprint-2/index.html')
 }
 
 var id1
@@ -153,43 +151,10 @@ function rollDice1(){
     }
     var diceNum = random(1,7);
     h1.innerHTML = diceNum
-    // while(diceNum == 0){
-    //     diceNum = random(7)
-    // }
-    // if(diceNum != 0){
-    //     h1.innerHTML = diceNum
-    // }
-    // else{
-    //     diceNum = random(7)
-    //     h1.innerHTML = diceNum
-    // }
-
     
-    // var newPosition1 = []
-    // for(var i = 10; i >= 1; i--){
-    //     for(var j = 10; j >= 1; j--){
-    //         if(playerOnePosition == 'r'+i+'c'+j){
-    //             for(var k = j; k >= diceNum; k--){
-    //                 j
-    //             }
-    //             j = j - diceNum
-    //             if(j)
-    //             newPosition1 = 'r'+i+'c'+j
-
-
-                // var goal = document.getElementById("r1c1")
-                // goal.style.backgroundColor = "#e6b105"
-                // var winnerImage = document.createElement('img')
-                // winnerImage.setAttribute('src','resources/winner.png')
-                // winnerImage.style.width = "35px"
-                // winnerImage.style.marginTop = "7px"
-                // goal.appendChild(winnerImage)
-    //         }
-    //     }
-    // }
-    var initial = start.getAttribute('id')
+    var initial = startP1.getAttribute('id')
     id1 = initial
-    // console.log(initial)
+    
     if(initial == "r10c10"){
         var id1 = "r10c10"
 
@@ -202,8 +167,8 @@ function rollDice1(){
         startImageP2.style.marginLeft = "13px"
         startP2.appendChild(startImageP2)
 
-        start = document.getElementById(id1)
-        startImage = document.getElementById("player1")
+        startP1 = document.getElementById(id1)
+        startImageP1 = document.getElementById("player1")
 
         tempID1 = document.getElementById(id1)
         playerOnePosition = tempID1.getAttribute('class')
@@ -213,7 +178,7 @@ function rollDice1(){
             newPlayerOnePosition = newPlayerOnePosition + 6
             bonusLadder.style.display = "unset"
         }
-        if(newPlayerOnePosition == 7){
+        else if(newPlayerOnePosition == 7){
             newPlayerOnePosition = newPlayerOnePosition - 6
             oopsSnake.style.display = "unset"
         }
@@ -223,9 +188,8 @@ function rollDice1(){
         tempID1 = tempClass1[0].getAttribute('id')
         id1 = tempID1
 
-        start = document.getElementById(id1)
-        start.appendChild(startImage)
-
+        startP1 = document.getElementById(id1)
+        startP1.appendChild(startImageP1)
     }
     else{
         console.log(id1)
@@ -234,18 +198,18 @@ function rollDice1(){
         console.log(playerOnePosition)
         console.log(newPlayerOnePosition)
 
-        start = document.getElementById(id1)
-        startImage = document.getElementById("player1")
+        startP1 = document.getElementById(id1)
+        startImageP1 = document.getElementById("player1")
 
         tempID1 = document.getElementById(id1)
         playerOnePosition = tempID1.getAttribute('class')
         newPlayerOnePosition = Number(playerOnePosition) + diceNum
 
-        if(newPlayerOnePosition == 3 || newPlayerOnePosition == 29 || newPlayerOnePosition == 32 || newPlayerOnePosition == 55 || newPlayerOnePosition == 70 || newPlayerOnePosition == 83){
+        if(newPlayerOnePosition == 3 || newPlayerOnePosition == 29 || newPlayerOnePosition == 32 || newPlayerOnePosition == 56 || newPlayerOnePosition == 70 || newPlayerOnePosition == 83){
             newPlayerOnePosition = newPlayerOnePosition + 6
             bonusLadder.style.display = "unset"
         }
-        if(newPlayerOnePosition == 7 || newPlayerOnePosition == 25 || newPlayerOnePosition == 48 || newPlayerOnePosition == 61 || newPlayerOnePosition == 76 || newPlayerOnePosition == 97){
+        else if(newPlayerOnePosition == 7 || newPlayerOnePosition == 25 || newPlayerOnePosition == 48 || newPlayerOnePosition == 61 || newPlayerOnePosition == 75 || newPlayerOnePosition == 97){
             newPlayerOnePosition = newPlayerOnePosition - 6
             oopsSnake.style.display = "unset"
         }
@@ -255,8 +219,16 @@ function rollDice1(){
         tempID1 = tempClass1[0].getAttribute('id')
         id1 = tempID1
 
-        start = document.getElementById(id1)
-        start.appendChild(startImage)
+        startP1 = document.getElementById(id1)
+        startP1.appendChild(startImageP1)
+
+        if(Number(newPlayerOnePosition) == 100){
+            playerOneWinner.textContent = playerOne+" "+"Wins!"+"\n"+"Better luck next time"+" "+playerTwo
+            playerOneWinner.style.display = "unset"
+            newGame.style.display = "unset"
+            dice1.style.visibility = "hidden"
+            dice2.style.visibility = "hidden"
+        }
     }
 }
 
@@ -277,20 +249,10 @@ function rollDice2(){
     }
     var diceNum = random(1,7);
     h1.innerHTML = diceNum
-    // while(diceNum == 0){
-    //     diceNum = random(7)
-    // }
-    // if(diceNum != 0){
-    //     h1.innerHTML = diceNum
-    // }
-    // else{
-    //     diceNum = random(7)
-    //     h1.innerHTML = diceNum
-    // }
 
     var initial = startP2.getAttribute('id')
     id2 = initial
-    // console.log(initial)
+
     if(initial == "r10c10"){
         var id2 = "r10c10"
 
@@ -305,7 +267,7 @@ function rollDice2(){
             newPlayerTwoPosition = newPlayerTwoPosition + 6
             bonusLadder.style.display = "unset"
         }
-        if(newPlayerTwoPosition == 7){
+        else if(newPlayerTwoPosition == 7){
             newPlayerTwoPosition = newPlayerTwoPosition - 6
             oopsSnake.style.display = "unset"
         }
@@ -317,7 +279,6 @@ function rollDice2(){
 
         startP2 = document.getElementById(id2)
         startP2.appendChild(startImageP2)
-
     }
     else{
         console.log(id2)
@@ -333,11 +294,11 @@ function rollDice2(){
         playerTwoPosition = tempID2.getAttribute('class')
         newPlayerTwoPosition = Number(playerTwoPosition) + diceNum
 
-        if(newPlayerTwoPosition == 3 || newPlayerTwoPosition == 29 || newPlayerTwoPosition == 32 || newPlayerTwoPosition == 55 || newPlayerTwoPosition == 70 || newPlayerTwoPosition == 83){
+        if(newPlayerTwoPosition == 3 || newPlayerTwoPosition == 29 || newPlayerTwoPosition == 32 || newPlayerTwoPosition == 56 || newPlayerTwoPosition == 70 || newPlayerTwoPosition == 83){
             newPlayerTwoPosition = newPlayerTwoPosition + 6
             bonusLadder.style.display = "unset"
         }
-        if(newPlayerTwoPosition == 7 || newPlayerTwoPosition == 25 || newPlayerTwoPosition == 48 || newPlayerTwoPosition == 61 || newPlayerTwoPosition == 76 || newPlayerTwoPosition == 97){
+        else if(newPlayerTwoPosition == 7 || newPlayerTwoPosition == 25 || newPlayerTwoPosition == 48 || newPlayerTwoPosition == 61 || newPlayerTwoPosition == 75 || newPlayerTwoPosition == 97){
             newPlayerTwoPosition = newPlayerTwoPosition - 6
             oopsSnake.style.display = "unset"
         }
@@ -349,6 +310,13 @@ function rollDice2(){
 
         startP2 = document.getElementById(id2)
         startP2.appendChild(startImageP2)
+
+        if(Number(newPlayerTwoPosition) == 100){
+            playerTwoWinner.textContent = playerTwo+" "+"Wins!"+"\n"+"Better luck next time"+" "+playerOne
+            playerTwoWinner.style.display = "unset"
+            newGame.style.display = "unset"
+            dice1.style.visibility = "hidden"
+            dice2.style.visibility = "hidden"
+        }
     }
 }
-
